@@ -41,18 +41,33 @@ Namespace My
             Get
 
 #If _MyType = "WindowsForms" Then
-                   If Not addedHandler Then
-                        SyncLock addedHandlerLockObject
-                            If Not addedHandler Then
-                                AddHandler My.Application.Shutdown, AddressOf AutoSaveSettings
-                                addedHandler = True
-                            End If
-                        End SyncLock
-                    End If
+                If Not addedHandler Then
+                    SyncLock addedHandlerLockObject
+                        If Not addedHandler Then
+                            AddHandler My.Application.Shutdown, AddressOf AutoSaveSettings
+                            addedHandler = True
+                        End If
+                    End SyncLock
+                End If
 #End If
                 Return defaultInstance
             End Get
         End Property
+
+#Region "Syetem Admin"
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Daniel.Langridge2000@gmail.com")>
+        Public Property SystemAdmin() As String
+            Get
+                Return CType(Me("SystemAdmin"), String)
+            End Get
+            Set
+                Me("SystemAdmin") = Value
+            End Set
+        End Property
+#End Region
+
     End Class
 End Namespace
 

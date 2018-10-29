@@ -27,12 +27,13 @@ Partial Class Frm_Login
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtBox_Password = New System.Windows.Forms.TextBox()
         Me.Btn_Login = New System.Windows.Forms.Button()
+        Me.Btn_Forgotten = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TxtBox_UserName
         '
         Me.TxtBox_UserName.Location = New System.Drawing.Point(5, 20)
-        Me.TxtBox_UserName.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.TxtBox_UserName.Margin = New System.Windows.Forms.Padding(1)
         Me.TxtBox_UserName.Name = "TxtBox_UserName"
         Me.TxtBox_UserName.Size = New System.Drawing.Size(206, 20)
         Me.TxtBox_UserName.TabIndex = 0
@@ -60,7 +61,7 @@ Partial Class Frm_Login
         'TxtBox_Password
         '
         Me.TxtBox_Password.Location = New System.Drawing.Point(5, 61)
-        Me.TxtBox_Password.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.TxtBox_Password.Margin = New System.Windows.Forms.Padding(1)
         Me.TxtBox_Password.Name = "TxtBox_Password"
         Me.TxtBox_Password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TxtBox_Password.Size = New System.Drawing.Size(206, 20)
@@ -68,27 +69,37 @@ Partial Class Frm_Login
         '
         'Btn_Login
         '
-        Me.Btn_Login.Location = New System.Drawing.Point(7, 90)
-        Me.Btn_Login.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.Btn_Login.Location = New System.Drawing.Point(5, 90)
+        Me.Btn_Login.Margin = New System.Windows.Forms.Padding(1)
         Me.Btn_Login.Name = "Btn_Login"
-        Me.Btn_Login.Size = New System.Drawing.Size(95, 25)
+        Me.Btn_Login.Size = New System.Drawing.Size(95, 44)
         Me.Btn_Login.TabIndex = 4
         Me.Btn_Login.Text = "Login"
         Me.Btn_Login.UseVisualStyleBackColor = True
+        '
+        'Btn_Forgotten
+        '
+        Me.Btn_Forgotten.Location = New System.Drawing.Point(118, 90)
+        Me.Btn_Forgotten.Name = "Btn_Forgotten"
+        Me.Btn_Forgotten.Size = New System.Drawing.Size(93, 44)
+        Me.Btn_Forgotten.TabIndex = 5
+        Me.Btn_Forgotten.Text = "Forgotten Login"
+        Me.Btn_Forgotten.UseVisualStyleBackColor = True
         '
         'Frm_Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(225, 124)
+        Me.ClientSize = New System.Drawing.Size(234, 135)
+        Me.Controls.Add(Me.Btn_Forgotten)
         Me.Controls.Add(Me.Btn_Login)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TxtBox_Password)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBox_UserName)
-        Me.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "Frm_Login"
-        Me.Text = "Frm_Login"
+        Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -99,4 +110,5 @@ Partial Class Frm_Login
     Friend WithEvents Label2 As Label
     Friend WithEvents TxtBox_Password As TextBox
     Friend WithEvents Btn_Login As Button
+    Friend WithEvents Btn_Forgotten As Button
 End Class
