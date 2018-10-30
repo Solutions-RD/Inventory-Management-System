@@ -1,9 +1,19 @@
 ﻿Public Class Frm_Login
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Nah seriously last test push
+
     End Sub
 
-    Public Sub Test()
+    Private Sub Btn_Login_Click(sender As Object, e As EventArgs) Handles Btn_Login.Click
+
+        Dim UserName As String = TxtBox_UserName.Text
+        Dim Password As String = TxtBox_Password.Text
+
+        EstablishConnection()
+
+    End Sub
+
+    Private Sub EstablishConnection() 'Make first connection to Server to check login credentials
+
 
 
     End Sub

@@ -90,7 +90,7 @@ Partial Class Frm_Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(234, 135)
+        Me.ClientSize = New System.Drawing.Size(217, 138)
         Me.Controls.Add(Me.Btn_Forgotten)
         Me.Controls.Add(Me.Btn_Login)
         Me.Controls.Add(Me.Label2)
@@ -99,7 +99,7 @@ Partial Class Frm_Login
         Me.Controls.Add(Me.TxtBox_UserName)
         Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "Frm_Login"
-        Me.Text = "Login"
+        Me.Text = "x"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
