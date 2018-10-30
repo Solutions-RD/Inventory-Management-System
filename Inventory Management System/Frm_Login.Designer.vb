@@ -99,7 +99,7 @@ Partial Class Frm_Login
         Me.Controls.Add(Me.TxtBox_UserName)
         Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "Frm_Login"
-        Me.Text = "x"
+        Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
