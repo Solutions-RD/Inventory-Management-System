@@ -53,7 +53,7 @@ Namespace My
             End Get
         End Property
 
-#Region "Syetem Admin"
+#Region "System Admin"
         <Global.System.Configuration.UserScopedSettingAttribute(),
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.Configuration.DefaultSettingValueAttribute("Daniel.Langridge2000@gmail.com")>

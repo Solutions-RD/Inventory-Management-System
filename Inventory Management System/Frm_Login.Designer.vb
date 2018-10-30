@@ -54,9 +54,9 @@ Partial Class Frm_Login
         Me.Label2.Location = New System.Drawing.Point(5, 45)
         Me.Label2.Margin = New System.Windows.Forms.Padding(1, 0, 1, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 13)
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Username"
+        Me.Label2.Text = "Password"
         '
         'TxtBox_Password
         '
@@ -99,7 +99,7 @@ Partial Class Frm_Login
         Me.Controls.Add(Me.TxtBox_UserName)
         Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "Frm_Login"
-        Me.Text = "x"
+        Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
