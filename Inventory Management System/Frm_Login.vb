@@ -4,7 +4,7 @@ Imports System.Text
 Imports System.Security.Cryptography
 
 Public Class Frm_Login
-    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
+    Public ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
     Dim ConnectionStatus As Boolean = True
