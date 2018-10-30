@@ -8,4 +8,8 @@
     Private Sub Btn_Home_Click(sender As Object, e As EventArgs) Handles Btn_Home.Click
 
     End Sub
+
+    Private Sub Btn_FullStock_Click(sender As Object, e As EventArgs) Handles Btn_FullStock.Click
+
+    End Sub
 End Class

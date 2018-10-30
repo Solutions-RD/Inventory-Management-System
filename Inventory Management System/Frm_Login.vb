@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Frm_Login
-    Dim ConnectionString As String = "Server=localhost;User Id=root;Password=Pickles1350!;Database=inventory"
+    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Dan Langridge;Password=Flabbergasted123!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -11,10 +11,12 @@ Public Class Frm_Login
             If Connection.State = ConnectionState.Closed Then
                 MsgBox("Connection to DB could not be made!! Log in with offline details")
             Else
-                MsgBox("Successfully connected")
+                MsgBox("Connected")
             End If
-        Catch
-            MsgBox("Connection Failed")
+
+            Connection.Close()
+        Catch ex As Exception
+            MsgBox("Connection Failed, with error code: " & ex.ToString())
         End Try
 
     End Sub
@@ -32,7 +34,14 @@ Public Class Frm_Login
             End If
         Else
             If UserName = "a" And Password = "a" Then
-                Login()
+
+                Dim MyCommand As New MySqlCommand("SELECT * FROM items WHERE ItemID = @id", Connection)
+                MyCommand.Parameters.Add("@id", MySqlDbType.Int64).Value = "1"
+                Dim Reader As MySqlDataReader = MyCommand.ExecuteReader()
+
+
+
+                'Login()
             Else
                 MsgBox("Incorrect username of password")
             End If
