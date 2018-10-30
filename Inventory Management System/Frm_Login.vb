@@ -7,18 +7,23 @@ Public Class Frm_Login
     Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
-    Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim ConnectionStatus As Boolean = True
 
+    Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Connection.Open()
 
             If Connection.State = ConnectionState.Closed Then 'DB Connection Test
                 MsgBox("Connection to DB could not be made!! Log in with offline details")
+
+                ConnectionStatus = False
             End If
 
             Connection.Close()
         Catch ex As Exception
             MsgBox("Connection Failed, with error code: " & ex.ToString())
+
+            ConnectionStatus = False
         End Try
 
     End Sub
@@ -27,14 +32,14 @@ Public Class Frm_Login
 
         'https://stackoverflow.com/questions/16027925/select-from-mysql-put-into-variable-vb-net
 
-        Dim UserName As String = TxtBox_UserName.Text
+        Dim UserName As String = LCase(TxtBox_UserName.Text)
         Dim Password As String = TxtBox_Password.Text
 
         If UserName = "a" And Password = "a" Then 'THIS MUST BE REMOVED BEFORE WE RELEASE!!! HUGE SECURITY FLAW!!!!!!!!!!!!! obviously
             MsgBox("admin login")
             Login()
         Else
-            If TxtBox_Password.Text <> "" And TxtBox_UserName.Text <> "" Then
+            If TxtBox_Password.Text <> "" And TxtBox_UserName.Text <> "" And ConnectionStatus = True Then
 
                 Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName AND password = @EncryptedPassword", Connection) 'Query template
 
@@ -52,9 +57,14 @@ Public Class Frm_Login
                 Else
                     MsgBox("Username or password incorrect")
                 End If
-            Else
+            ElseIf TxtBox_Password.Text = "" Or TxtBox_UserName.Text = "" Then
                 MsgBox("Please fill out both Username and password")
+
+            ElseIf ConnectionStatus = False Then
+
+
             End If
+
         End If
 
     End Sub
