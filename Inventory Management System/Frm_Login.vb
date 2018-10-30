@@ -10,8 +10,6 @@ Public Class Frm_Login
 
             If Connection.State = ConnectionState.Closed Then
                 MsgBox("Connection to DB could not be made!! Log in with offline details")
-            Else
-                MsgBox("Successfully connected")
             End If
         Catch
             MsgBox("Connection Failed")
@@ -32,7 +30,14 @@ Public Class Frm_Login
             End If
         Else
             If UserName = "a" And Password = "a" Then
-                Login()
+
+                Dim MyCommand As New MySqlCommand("SELECT * FROM items WHERE ItemID = @id", Connection)
+                MyCommand.Parameters.Add("@id", MySqlDbType.Int64).Value = "1"
+                Dim Reader As MySqlDataReader = MyCommand.ExecuteReader()
+
+
+
+                'Login()
             Else
                 MsgBox("Incorrect username of password")
             End If
