@@ -1,22 +1,22 @@
 ﻿Imports MySql.Data.MySqlClient
 
+Imports System.Text
+Imports System.Security.Cryptography
+
 Public Class Frm_Login
-    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Ryan Marshall;Password=Pickles1350!;Database=inventory"
+    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Try
             Connection.Open()
 
-            If Connection.State = ConnectionState.Closed Then
+            If Connection.State = ConnectionState.Closed Then 'DB Connection Test
                 MsgBox("Connection to DB could not be made!! Log in with offline details")
-            Else
-                MsgBox(Connection.State.ToString)
             End If
 
             Connection.Close()
-
-            MsgBox(Connection.State.ToString)
         Catch ex As Exception
             MsgBox("Connection Failed, with error code: " & ex.ToString())
         End Try
@@ -25,27 +25,36 @@ Public Class Frm_Login
 
     Private Sub Btn_Login_Click(sender As Object, e As EventArgs) Handles Btn_Login.Click
 
+        'https://stackoverflow.com/questions/16027925/select-from-mysql-put-into-variable-vb-net
+
         Dim UserName As String = TxtBox_UserName.Text
         Dim Password As String = TxtBox_Password.Text
 
-        If Connection.State = ConnectionState.Closed Then
-            If UserName = "a" And Password = "a" Then
-                Login()
-            Else
-                MsgBox("Incorrect username of password")
-            End If
+        If UserName = "a" And Password = "a" Then 'THIS MUST BE REMOVED BEFORE WE RELEASE!!! HUGE SECURITY FLAW!!!!!!!!!!!!! obviously
+            MsgBox("admin login")
+            Login()
         Else
-            If UserName = "a" And Password = "a" Then
+            If TxtBox_Password.Text <> "" And TxtBox_UserName.Text <> "" Then
 
-                Dim MyCommand As New MySqlCommand("SELECT * FROM items WHERE ItemID = @id", Connection)
-                MyCommand.Parameters.Add("@id", MySqlDbType.Int64).Value = "1"
-                Dim Reader As MySqlDataReader = MyCommand.ExecuteReader()
+                Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName AND password = @EncryptedPassword", Connection) 'Query template
 
+                With MyCommand
+                    .Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_UserName.Text).ToString 'Adding protected paramaters
+                    .Parameters.Add("@EncryptedPassword", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_Password.Text).ToString
+                End With
 
+                Connection.Open()
+                Dim response As String = Convert.ToString(MyCommand.ExecuteScalar()) 'Actual query execution
+                MsgBox(response)
+                Connection.Close()
 
-                'Login()
+                If response.Length > 0 Then
+                    Login()
+                Else
+                    MsgBox("Username or password incorrect")
+                End If
             Else
-                MsgBox("Incorrect username of password")
+                MsgBox("Please fill out both Username and password")
             End If
         End If
 
@@ -61,6 +70,20 @@ Public Class Frm_Login
         Frm_NonAdminCustomer.Show()
 
     End Sub
+
+
+    Public Shared Function GenerateSHA256String(ByVal inputString) As String 'This is not my code, I might implement my own SHA256 hash soon, but for now, this will do. 
+        Dim sha256 As SHA256 = SHA256Managed.Create()
+        Dim bytes As Byte() = Encoding.UTF8.GetBytes(inputString)
+        Dim hash As Byte() = sha256.ComputeHash(bytes)
+        Dim stringBuilder As New StringBuilder()
+
+        For i As Integer = 0 To hash.Length - 1
+            stringBuilder.Append(hash(i).ToString("X2"))
+        Next
+
+        Return stringBuilder.ToString()
+    End Function
 
 
     'Private Sub UpdateListView(Which As String)
