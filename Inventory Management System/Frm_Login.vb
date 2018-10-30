@@ -9,7 +9,7 @@ Public Class Frm_Login
             Connection.Open()
 
             If Connection.State = ConnectionState.Closed Then
-                MsgBox("Connection to DB could not be made!!")
+                MsgBox("Connection to DB could not be made!! Log in with offline details")
             Else
                 MsgBox("Successfully connected")
             End If
@@ -24,19 +24,32 @@ Public Class Frm_Login
         Dim UserName As String = TxtBox_UserName.Text
         Dim Password As String = TxtBox_Password.Text
 
-        EstablishConnection()
+        If Connection.State = ConnectionState.Closed Then
+            If UserName = "a" And Password = "a" Then
+                Login()
+            Else
+                MsgBox("Incorrect username of password")
+            End If
+        Else
+            If UserName = "a" And Password = "a" Then
+                Login()
+            Else
+                MsgBox("Incorrect username of password")
+            End If
+        End If
 
     End Sub
 
-    Private Sub EstablishConnection() 'Make first connection to Server to check login credentials
-
-    End Sub
 
     Private Sub Btn_Forgotten_Click(sender As Object, e As EventArgs) Handles Btn_Forgotten.Click
         MsgBox("Please contact the system admin on: " & My.Settings.SystemAdmin)
     End Sub
 
+    Private Sub Login()
 
+        Frm_NonAdminCustomer.Show()
+
+    End Sub
 
 
     'Private Sub UpdateListView(Which As String)
