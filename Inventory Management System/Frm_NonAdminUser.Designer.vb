@@ -24,12 +24,19 @@ Partial Class Frm_NonAdminUser
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Btn_FullStock = New System.Windows.Forms.Button()
-        Me.Btn_LookUp = New System.Windows.Forms.Button()
-        Me.Btn_Customer = New System.Windows.Forms.Button()
-        Me.Btn_Supplier = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Btn_Supplier = New System.Windows.Forms.Button()
+        Me.Btn_Customer = New System.Windows.Forms.Button()
+        Me.Btn_LookUp = New System.Windows.Forms.Button()
+        Me.Btn_FullStock = New System.Windows.Forms.Button()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.Column1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -56,41 +63,14 @@ Partial Class Frm_NonAdminUser
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
         '
-        'Btn_FullStock
+        'Button6
         '
-        Me.Btn_FullStock.Location = New System.Drawing.Point(13, 13)
-        Me.Btn_FullStock.Name = "Btn_FullStock"
-        Me.Btn_FullStock.Size = New System.Drawing.Size(65, 58)
-        Me.Btn_FullStock.TabIndex = 0
-        Me.Btn_FullStock.Text = "Full Stock"
-        Me.Btn_FullStock.UseVisualStyleBackColor = True
-        '
-        'Btn_LookUp
-        '
-        Me.Btn_LookUp.Location = New System.Drawing.Point(84, 13)
-        Me.Btn_LookUp.Name = "Btn_LookUp"
-        Me.Btn_LookUp.Size = New System.Drawing.Size(65, 58)
-        Me.Btn_LookUp.TabIndex = 1
-        Me.Btn_LookUp.Text = "Look Up"
-        Me.Btn_LookUp.UseVisualStyleBackColor = True
-        '
-        'Btn_Customer
-        '
-        Me.Btn_Customer.Location = New System.Drawing.Point(155, 13)
-        Me.Btn_Customer.Name = "Btn_Customer"
-        Me.Btn_Customer.Size = New System.Drawing.Size(65, 58)
-        Me.Btn_Customer.TabIndex = 2
-        Me.Btn_Customer.Text = "Customer"
-        Me.Btn_Customer.UseVisualStyleBackColor = True
-        '
-        'Btn_Supplier
-        '
-        Me.Btn_Supplier.Location = New System.Drawing.Point(226, 13)
-        Me.Btn_Supplier.Name = "Btn_Supplier"
-        Me.Btn_Supplier.Size = New System.Drawing.Size(65, 58)
-        Me.Btn_Supplier.TabIndex = 3
-        Me.Btn_Supplier.Text = "Supplier"
-        Me.Btn_Supplier.UseVisualStyleBackColor = True
+        Me.Button6.Location = New System.Drawing.Point(368, 13)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(65, 58)
+        Me.Button6.TabIndex = 5
+        Me.Button6.Text = "Button6"
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'Button5
         '
@@ -101,20 +81,63 @@ Partial Class Frm_NonAdminUser
         Me.Button5.Text = "Button5"
         Me.Button5.UseVisualStyleBackColor = True
         '
-        'Button6
+        'Btn_Supplier
         '
-        Me.Button6.Location = New System.Drawing.Point(368, 13)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(65, 58)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = "Button6"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Btn_Supplier.Location = New System.Drawing.Point(226, 13)
+        Me.Btn_Supplier.Name = "Btn_Supplier"
+        Me.Btn_Supplier.Size = New System.Drawing.Size(65, 58)
+        Me.Btn_Supplier.TabIndex = 3
+        Me.Btn_Supplier.Text = "Supplier"
+        Me.Btn_Supplier.UseVisualStyleBackColor = True
+        '
+        'Btn_Customer
+        '
+        Me.Btn_Customer.Location = New System.Drawing.Point(155, 13)
+        Me.Btn_Customer.Name = "Btn_Customer"
+        Me.Btn_Customer.Size = New System.Drawing.Size(65, 58)
+        Me.Btn_Customer.TabIndex = 2
+        Me.Btn_Customer.Text = "Customer"
+        Me.Btn_Customer.UseVisualStyleBackColor = True
+        '
+        'Btn_LookUp
+        '
+        Me.Btn_LookUp.Location = New System.Drawing.Point(84, 13)
+        Me.Btn_LookUp.Name = "Btn_LookUp"
+        Me.Btn_LookUp.Size = New System.Drawing.Size(65, 58)
+        Me.Btn_LookUp.TabIndex = 1
+        Me.Btn_LookUp.Text = "Look Up"
+        Me.Btn_LookUp.UseVisualStyleBackColor = True
+        '
+        'Btn_FullStock
+        '
+        Me.Btn_FullStock.Location = New System.Drawing.Point(13, 13)
+        Me.Btn_FullStock.Name = "Btn_FullStock"
+        Me.Btn_FullStock.Size = New System.Drawing.Size(65, 58)
+        Me.Btn_FullStock.TabIndex = 0
+        Me.Btn_FullStock.Text = "Full Stock"
+        Me.Btn_FullStock.UseVisualStyleBackColor = True
+        '
+        'ListView1
+        '
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Column1, Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.ListView1.GridLines = True
+        Me.ListView1.Location = New System.Drawing.Point(13, 158)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(363, 269)
+        Me.ListView1.TabIndex = 2
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
+        '
+        'Column1
+        '
+        Me.Column1.Text = "Column 1"
         '
         'Frm_NonAdminUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(884, 461)
+        Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -134,4 +157,11 @@ Partial Class Frm_NonAdminUser
     Friend WithEvents Btn_Customer As Button
     Friend WithEvents Btn_LookUp As Button
     Friend WithEvents Btn_FullStock As Button
+    Friend WithEvents ListView1 As ListView
+    Private WithEvents Column1 As ColumnHeader
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
 End Class
