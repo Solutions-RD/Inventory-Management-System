@@ -17,4 +17,10 @@
 
 
     End Sub
+
+    Private Sub Btn_Forgotten_Click(sender As Object, e As EventArgs) Handles Btn_Forgotten.Click
+
+        MsgBox("Please contact the system admin on: " & My.Settings.SystemAdmin)
+
+    End Sub
 End Class
