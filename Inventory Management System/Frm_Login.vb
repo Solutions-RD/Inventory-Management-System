@@ -88,9 +88,6 @@ Public Class Frm_Login
 
 
 
-
-
-
     'Private Sub UpdateListView(Which As String)
     '    Dim MaxRow As Integer = xlSheet.Cells(2, 6).value
 
