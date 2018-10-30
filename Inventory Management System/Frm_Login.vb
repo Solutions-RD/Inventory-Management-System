@@ -1,10 +1,21 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Frm_Login
-    Dim Connection As New SqlConnection("")
-
+    Dim ConnectionString As String = "User ID=root;Password=Pickles1350!;Initial Catalog=Inventory;Data Source=10.125.194.171"
+    Dim Connection As New SqlConnection(ConnectionString)
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            Connection.Open()
+
+            If Connection.State = ConnectionState.Closed Then
+                MsgBox("Connection to DB could not be made!!")
+            Else
+                MsgBox("Successfully connected")
+            End If
+        Catch
+            MsgBox("Connection Failed")
+        End Try
 
     End Sub
 
@@ -18,8 +29,6 @@ Public Class Frm_Login
     End Sub
 
     Private Sub EstablishConnection() 'Make first connection to Server to check login credentials
-
-
 
     End Sub
 
