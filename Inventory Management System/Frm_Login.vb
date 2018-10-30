@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Frm_Login
-    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Ryan Marshall;Password=Pickles1350!;Database=inventory"
+    Dim ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=user;Password=UserPickles1350!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load

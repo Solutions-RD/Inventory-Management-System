@@ -5,7 +5,8 @@
         Me.Visible = False
     End Sub
 
-    Private Sub Rdb_InHouse_CheckedChanged(sender As Object, e As EventArgs)
+
+    Private Sub Rbt_InHouse_CheckedChanged_1(sender As Object, e As EventArgs) Handles Rbt_InHouse.CheckedChanged
 
         If Rbt_InHouse.Checked = True Then
             Lbl_CustomerEmail.Visible = False
@@ -25,6 +26,14 @@
 
 
         End If
+
+    End Sub
+
+    Private Sub Btn_SaveCustomer_Click(sender As Object, e As EventArgs) Handles Btn_SaveCustomer.Click
+
+
+
+        TabControl1.TabPages.Add("")
 
     End Sub
 End Class
