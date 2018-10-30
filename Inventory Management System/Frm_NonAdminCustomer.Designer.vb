@@ -58,12 +58,25 @@ Partial Class Frm_NonAdminCustomer
         Me.Btn_LookUp = New System.Windows.Forms.Button()
         Me.Btn_FullStock = New System.Windows.Forms.Button()
         Me.Grp_Menu = New System.Windows.Forms.GroupBox()
+        Me.Tbx_EnterName = New System.Windows.Forms.TextBox()
+        Me.Lbl_EnterName = New System.Windows.Forms.Label()
+        Me.Txb_CustomerNo = New System.Windows.Forms.TextBox()
+        Me.Lbl_CustomerNo = New System.Windows.Forms.Label()
+        Me.Txb_CustomerEmail = New System.Windows.Forms.TextBox()
+        Me.Lbl_CustomerEmail = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Rbt_InHouse = New System.Windows.Forms.RadioButton()
+        Me.Rbt_OutOfHouse = New System.Windows.Forms.RadioButton()
+        Me.Tb_NewCustomer = New System.Windows.Forms.TabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Tb_VenueA.SuspendLayout()
         Me.Tb_VenueB.SuspendLayout()
         Me.Tb_VenueC.SuspendLayout()
         Me.Tb_VenueD.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.Grp_Menu.SuspendLayout()
+        Me.Tb_NewCustomer.SuspendLayout()
         Me.SuspendLayout()
         '
         'Clm_ProductB
@@ -242,6 +255,7 @@ Partial Class Frm_NonAdminCustomer
         '
         'TabControl1
         '
+        Me.TabControl1.Controls.Add(Me.Tb_NewCustomer)
         Me.TabControl1.Controls.Add(Me.Tb_VenueA)
         Me.TabControl1.Controls.Add(Me.Tb_VenueB)
         Me.TabControl1.Controls.Add(Me.Tb_VenueC)
@@ -322,6 +336,121 @@ Partial Class Frm_NonAdminCustomer
         Me.Grp_Menu.TabStop = False
         Me.Grp_Menu.Text = "Menu"
         '
+        'Tbx_EnterName
+        '
+        Me.Tbx_EnterName.Location = New System.Drawing.Point(156, 24)
+        Me.Tbx_EnterName.Name = "Tbx_EnterName"
+        Me.Tbx_EnterName.Size = New System.Drawing.Size(189, 20)
+        Me.Tbx_EnterName.TabIndex = 0
+        '
+        'Lbl_EnterName
+        '
+        Me.Lbl_EnterName.AutoSize = True
+        Me.Lbl_EnterName.Location = New System.Drawing.Point(22, 26)
+        Me.Lbl_EnterName.Name = "Lbl_EnterName"
+        Me.Lbl_EnterName.Size = New System.Drawing.Size(0, 13)
+        Me.Lbl_EnterName.TabIndex = 1
+        '
+        'Txb_CustomerNo
+        '
+        Me.Txb_CustomerNo.Location = New System.Drawing.Point(156, 49)
+        Me.Txb_CustomerNo.Name = "Txb_CustomerNo"
+        Me.Txb_CustomerNo.Size = New System.Drawing.Size(189, 20)
+        Me.Txb_CustomerNo.TabIndex = 2
+        '
+        'Lbl_CustomerNo
+        '
+        Me.Lbl_CustomerNo.AutoSize = True
+        Me.Lbl_CustomerNo.Location = New System.Drawing.Point(22, 51)
+        Me.Lbl_CustomerNo.Name = "Lbl_CustomerNo"
+        Me.Lbl_CustomerNo.Size = New System.Drawing.Size(131, 13)
+        Me.Lbl_CustomerNo.TabIndex = 3
+        Me.Lbl_CustomerNo.Text = "Customer Contact Number"
+        '
+        'Txb_CustomerEmail
+        '
+        Me.Txb_CustomerEmail.Location = New System.Drawing.Point(156, 75)
+        Me.Txb_CustomerEmail.Name = "Txb_CustomerEmail"
+        Me.Txb_CustomerEmail.Size = New System.Drawing.Size(189, 20)
+        Me.Txb_CustomerEmail.TabIndex = 4
+        '
+        'Lbl_CustomerEmail
+        '
+        Me.Lbl_CustomerEmail.AutoSize = True
+        Me.Lbl_CustomerEmail.Location = New System.Drawing.Point(22, 77)
+        Me.Lbl_CustomerEmail.Name = "Lbl_CustomerEmail"
+        Me.Lbl_CustomerEmail.Size = New System.Drawing.Size(107, 13)
+        Me.Lbl_CustomerEmail.TabIndex = 5
+        Me.Lbl_CustomerEmail.Text = "Enter Customer Email"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(22, 103)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(0, 13)
+        Me.Label3.TabIndex = 7
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(359, 29)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(0, 13)
+        Me.Label4.TabIndex = 8
+        '
+        'Rbt_InHouse
+        '
+        Me.Rbt_InHouse.AutoSize = True
+        Me.Rbt_InHouse.Location = New System.Drawing.Point(421, 27)
+        Me.Rbt_InHouse.Name = "Rbt_InHouse"
+        Me.Rbt_InHouse.Size = New System.Drawing.Size(68, 17)
+        Me.Rbt_InHouse.TabIndex = 9
+        Me.Rbt_InHouse.Text = "In House"
+        Me.Rbt_InHouse.UseVisualStyleBackColor = True
+        '
+        'Rbt_OutOfHouse
+        '
+        Me.Rbt_OutOfHouse.AutoSize = True
+        Me.Rbt_OutOfHouse.Checked = True
+        Me.Rbt_OutOfHouse.Location = New System.Drawing.Point(421, 50)
+        Me.Rbt_OutOfHouse.Name = "Rbt_OutOfHouse"
+        Me.Rbt_OutOfHouse.Size = New System.Drawing.Size(90, 17)
+        Me.Rbt_OutOfHouse.TabIndex = 10
+        Me.Rbt_OutOfHouse.TabStop = True
+        Me.Rbt_OutOfHouse.Text = "Out Of House"
+        Me.Rbt_OutOfHouse.UseVisualStyleBackColor = True
+        '
+        'Tb_NewCustomer
+        '
+        Me.Tb_NewCustomer.Controls.Add(Me.Label1)
+        Me.Tb_NewCustomer.Controls.Add(Me.Rbt_OutOfHouse)
+        Me.Tb_NewCustomer.Controls.Add(Me.Rbt_InHouse)
+        Me.Tb_NewCustomer.Controls.Add(Me.Label4)
+        Me.Tb_NewCustomer.Controls.Add(Me.Label3)
+        Me.Tb_NewCustomer.Controls.Add(Me.Lbl_CustomerEmail)
+        Me.Tb_NewCustomer.Controls.Add(Me.Txb_CustomerEmail)
+        Me.Tb_NewCustomer.Controls.Add(Me.Lbl_CustomerNo)
+        Me.Tb_NewCustomer.Controls.Add(Me.Txb_CustomerNo)
+        Me.Tb_NewCustomer.Controls.Add(Me.Lbl_EnterName)
+        Me.Tb_NewCustomer.Controls.Add(Me.Tbx_EnterName)
+        Me.Tb_NewCustomer.Location = New System.Drawing.Point(4, 22)
+        Me.Tb_NewCustomer.Name = "Tb_NewCustomer"
+        Me.Tb_NewCustomer.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tb_NewCustomer.Size = New System.Drawing.Size(851, 340)
+        Me.Tb_NewCustomer.TabIndex = 4
+        Me.Tb_NewCustomer.Text = "New Customer"
+        Me.Tb_NewCustomer.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(22, 27)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(82, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Customer Name"
+        '
         'Frm_NonAdminCustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -337,6 +466,8 @@ Partial Class Frm_NonAdminCustomer
         Me.Tb_VenueD.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.Grp_Menu.ResumeLayout(False)
+        Me.Tb_NewCustomer.ResumeLayout(False)
+        Me.Tb_NewCustomer.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -377,4 +508,16 @@ Partial Class Frm_NonAdminCustomer
     Friend WithEvents Btn_LookUp As Button
     Friend WithEvents Btn_FullStock As Button
     Friend WithEvents Grp_Menu As GroupBox
+    Friend WithEvents Tb_NewCustomer As TabPage
+    Friend WithEvents Rbt_OutOfHouse As RadioButton
+    Friend WithEvents Rbt_InHouse As RadioButton
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Lbl_CustomerEmail As Label
+    Friend WithEvents Txb_CustomerEmail As TextBox
+    Friend WithEvents Lbl_CustomerNo As Label
+    Friend WithEvents Txb_CustomerNo As TextBox
+    Friend WithEvents Lbl_EnterName As Label
+    Friend WithEvents Tbx_EnterName As TextBox
+    Friend WithEvents Label1 As Label
 End Class
