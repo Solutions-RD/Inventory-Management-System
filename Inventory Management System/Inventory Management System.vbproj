@@ -80,10 +80,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.vb">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <Compile Include="Frm_ChangeLoginDetails.Designer.vb">
+      <DependentUpon>Frm_ChangeLoginDetails.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form2.vb">
+    <Compile Include="Frm_ChangeLoginDetails.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Login.Designer.vb">
@@ -142,8 +142,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <EmbeddedResource Include="Frm_ChangeLoginDetails.resx">
+      <DependentUpon>Frm_ChangeLoginDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.vb</DependentUpon>
