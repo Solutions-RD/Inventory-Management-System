@@ -1,4 +1,9 @@
-﻿Public Class Frm_Login
+﻿Imports System.Data.SqlClient
+
+Public Class Frm_Login
+    Dim Connection As New SqlConnection("")
+
+
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -19,8 +24,6 @@
     End Sub
 
     Private Sub Btn_Forgotten_Click(sender As Object, e As EventArgs) Handles Btn_Forgotten.Click
-
         MsgBox("Please contact the system admin on: " & My.Settings.SystemAdmin)
-
     End Sub
 End Class
