@@ -85,6 +85,12 @@
     <Compile Include="Frm_Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm_NonAdminCustomer.Designer.vb">
+      <DependentUpon>Frm_NonAdminCustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NonAdminCustomer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm_NonAdminUser.Designer.vb">
       <DependentUpon>Frm_NonAdminUser.vb</DependentUpon>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonAdminCustomer.resx">
+      <DependentUpon>Frm_NonAdminCustomer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_NonAdminUser.resx">
       <DependentUpon>Frm_NonAdminUser.vb</DependentUpon>

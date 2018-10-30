@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_NonAdminUser
+Partial Class Frm_NonAdminCustomer
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -322,15 +322,15 @@ Partial Class Frm_NonAdminUser
         Me.Grp_Menu.TabStop = False
         Me.Grp_Menu.Text = "Menu"
         '
-        'Frm_NonAdminUser
+        'Frm_NonAdminCustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(884, 461)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Grp_Menu)
-        Me.Name = "Frm_NonAdminUser"
-        Me.Text = "Frm_NonAdminUser"
+        Me.Name = "Frm_NonAdminCustomer"
+        Me.Text = "Frm_NonAdminCustomer"
         Me.Tb_VenueA.ResumeLayout(False)
         Me.Tb_VenueB.ResumeLayout(False)
         Me.Tb_VenueC.ResumeLayout(False)
