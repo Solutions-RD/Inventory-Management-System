@@ -45,7 +45,6 @@ Public Class Frm_Login
 
                 Connection.Open()
                 Dim response As String = Convert.ToString(MyCommand.ExecuteScalar()) 'Actual query execution
-                MsgBox(response)
                 Connection.Close()
 
                 If response.Length > 0 Then
@@ -71,8 +70,7 @@ Public Class Frm_Login
 
     End Sub
 
-
-    Public Shared Function GenerateSHA256String(ByVal inputString) As String 'This is not my code, I might implement my own SHA256 hash soon, but for now, this will do. 
+    Public Shared Function GenerateSHA256String(ByVal inputString) As String
         Dim sha256 As SHA256 = SHA256Managed.Create()
         Dim bytes As Byte() = Encoding.UTF8.GetBytes(inputString)
         Dim hash As Byte() = sha256.ComputeHash(bytes)
@@ -84,6 +82,13 @@ Public Class Frm_Login
 
         Return stringBuilder.ToString()
     End Function
+
+
+
+
+
+
+
 
 
     'Private Sub UpdateListView(Which As String)
