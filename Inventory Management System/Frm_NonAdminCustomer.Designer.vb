@@ -422,12 +422,13 @@ Partial Class Frm_NonAdminCustomer
         '
         'Btn_Customer
         '
+        Me.Btn_Customer.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Btn_Customer.Location = New System.Drawing.Point(155, 13)
         Me.Btn_Customer.Name = "Btn_Customer"
         Me.Btn_Customer.Size = New System.Drawing.Size(65, 58)
         Me.Btn_Customer.TabIndex = 2
         Me.Btn_Customer.Text = "Customer"
-        Me.Btn_Customer.UseVisualStyleBackColor = True
+        Me.Btn_Customer.UseVisualStyleBackColor = False
         '
         'Btn_LookUp
         '

@@ -92,10 +92,28 @@
     <Compile Include="Frm_NonAdminCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm_NonAdminCustomerFullStock.Designer.vb">
+      <DependentUpon>Frm_NonAdminCustomerFullStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NonAdminCustomerFullStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm_NonAdminUser.Designer.vb">
       <DependentUpon>Frm_NonAdminUser.vb</DependentUpon>
     </Compile>
     <Compile Include="Frm_NonAdminUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NonAdminUserLookUp.Designer.vb">
+      <DependentUpon>Frm_NonAdminUserLookUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NonAdminUserLookUp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NonAdminUserSupplier.Designer.vb">
+      <DependentUpon>Frm_NonAdminUserSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NonAdminUserSupplier.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -124,8 +142,17 @@
     <EmbeddedResource Include="Frm_NonAdminCustomer.resx">
       <DependentUpon>Frm_NonAdminCustomer.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonAdminCustomerFullStock.resx">
+      <DependentUpon>Frm_NonAdminCustomerFullStock.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_NonAdminUser.resx">
       <DependentUpon>Frm_NonAdminUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonAdminUserLookUp.resx">
+      <DependentUpon>Frm_NonAdminUserLookUp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonAdminUserSupplier.resx">
+      <DependentUpon>Frm_NonAdminUserSupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
