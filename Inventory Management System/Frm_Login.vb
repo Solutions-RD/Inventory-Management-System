@@ -61,8 +61,7 @@ Public Class Frm_Login
                 MsgBox("Please fill out both Username and password")
 
             ElseIf ConnectionStatus = False Then
-
-
+                MsgBox("There is no connection to the server, please use the offline login details!")
             End If
 
         End If
