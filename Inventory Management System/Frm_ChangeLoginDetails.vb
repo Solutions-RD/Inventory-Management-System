@@ -65,7 +65,7 @@ Public Class Frm_ChangeLogInDetails
         Loop Until ValidInput = True
 
         'INSERT QUERY FOR ADDING NEw USER
-        Dim MyCommand As New MySqlCommand("INSERT INTO 'Inventory'.'users'('Username','Password','Privilage') VALUES (@Username, @Password, @Privilage)")
+        Dim MyCommand As New MySqlCommand("INSERT INTO 'Inventory'.'users'('Username','Password','Privilage') VALUES (@Username, @Password, @Privilage)", Connection)
 
         With MyCommand
             .Parameters.Add("@Username", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(UserName)
@@ -86,13 +86,41 @@ Public Class Frm_ChangeLogInDetails
     End Sub
 
     Private Sub Btn_RemoveUser_Click(sender As Object, e As EventArgs) Handles Btn_RemoveUser.Click
-        Dim Mycommand As New MySqlCommand
 
+        Dim ValidAnswer As Boolean = False
+        Dim user As String = ""
 
+        Do
+            user = LCase(InputBox("Please enter the user you with to remove", "User removal"))
+
+            If User = "" Then
+                Exit Sub
+            Else
+                ValidAnswer = True
+            End If
+        Loop Until ValidAnswer = True
+
+        Dim EncryptedUsername As String = Frm_Login.GenerateSHA256String(user)
+
+        Dim Mycommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName", Connection)
+        Mycommand.Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = EncryptedUsername
+
+        Connection.Open()
+        Dim Responce As String = Convert.ToString(Mycommand.ExecuteScalar())
+        Connection.Close()
+
+        If Responce.Length > 0 Then 'User exists
+            Mycommand = New MySqlCommand("UPDATE `inventory`.`users` SET `UserID` = '', `Username` = '', `Password` = '' WHERE Username = @EncryptedUsername;", Connection)
+            Mycommand.Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = EncryptedUsername
+
+            Connection.Open()
+            Mycommand.ExecuteScalar()
+            Connection.Close()
+        Else
+            MsgBox("User does not exist")
+        End If
 
     End Sub
-
-
 
 
 
