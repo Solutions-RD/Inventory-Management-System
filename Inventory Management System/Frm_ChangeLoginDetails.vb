@@ -8,7 +8,8 @@ Public Class Frm_ChangeLogInDetails
     Private Sub Frm_ChangeLogInDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim MyCommand As New MySqlCommand
 
-
+        Connection.Open()
+        Connection.Close()
 
     End Sub
 
@@ -21,6 +22,18 @@ Public Class Frm_ChangeLogInDetails
 
     Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles Btn_ChangePassword.Click
         Dim MyCommand As New MySqlCommand
+
+        Dim ValidInput As Boolean = False
+
+        Do
+            Dim UserName As String = InputBox("Please enter the User name:", "UserName")
+
+            If UserName = "" Then
+                Exit Sub
+            Else
+                ValidInput = True
+            End If
+        Loop Until ValidInput = True
 
 
 
