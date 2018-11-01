@@ -219,16 +219,4 @@ Public Class Frm_ChangeLogInDetails
 
     End Sub
 
-
-    'Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName AND password = @EncryptedPassword", Connection) 'Query template
-
-    'With MyCommand
-    '.Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_UserName.Text).ToString 'Adding protected paramaters
-    '.Parameters.Add("@EncryptedPassword", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_Password.Text).ToString
-    'End With
-
-    'Connection.Open()
-    'Dim response As String = Convert.ToString(MyCommand.ExecuteScalar()) 'Actual query execution
-    'Connection.Close()
-
 End Class
