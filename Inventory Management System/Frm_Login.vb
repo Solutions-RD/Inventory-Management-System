@@ -44,8 +44,8 @@ Public Class Frm_Login
                 Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName AND password = @EncryptedPassword", Connection) 'Query template
 
                 With MyCommand
-                    .Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_UserName.Text).ToString 'Adding protected paramaters
-                    .Parameters.Add("@EncryptedPassword", MySqlDbType.LongText).Value = GenerateSHA256String(TxtBox_Password.Text).ToString
+                    .Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = GenerateSHA256String(UserName).ToString 'Adding protected paramaters
+                    .Parameters.Add("@EncryptedPassword", MySqlDbType.LongText).Value = GenerateSHA256String(Password).ToString
                 End With
 
                 Connection.Open()
@@ -75,7 +75,7 @@ Public Class Frm_Login
 
     Private Sub Login()
 
-        Frm_NonAdminCustomer.Show()
+        Frm_ChangeLogInDetails.Show()
 
     End Sub
 

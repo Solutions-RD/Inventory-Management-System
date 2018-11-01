@@ -16,7 +16,7 @@ Public Class Frm_ChangeLogInDetails
         Dim Username, Password As String
 
         Do
-            Username = InputBox("Please enter the User name:", "UserName")
+            Username = LCase(InputBox("Please enter the User name:", "UserName"))
             Password = InputBox("Please enter the current Password:", "Password")
 
             If Username = "" Or Password = "" Then
@@ -26,21 +26,25 @@ Public Class Frm_ChangeLogInDetails
             End If
         Loop Until ValidInput = True
 
-        MyCommand = New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUsername AND Password = @EncrypterPassword", Connection)
+        MyCommand = New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUsername AND Password = @EncryptedPassword", Connection)
 
         With MyCommand
-            .Parameters.Add("@encrypterUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
-            .Parameters.Add("@encrypterUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Password)
+            .Parameters.Add("@encryptedUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
+            .Parameters.Add("@encryptedPassword", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Password)
         End With
 
         Connection.Open()
         Dim SelectResponse As String = MyCommand.ExecuteScalar()
         Connection.Close()
 
-        If SelectResponse.Length > 0 Then
+        If SelectResponse = Nothing Then
             Dim NewPassword As String = InputBox("Please enter the new password for: " & Username, "New password")
 
-            MyCommand = New MySqlCommand("UPDATE Users SET Password = @EncryptedPassword WHERE UserID = @ID")
+            If NewPassword = "" Then
+                Exit Sub
+            End If
+
+            MyCommand = New MySqlCommand("UPDATE Users SET Password = @EncryptedPassword WHERE UserID = @ID", Connection)
 
             With MyCommand
                 .Parameters.Add("@EncryptedPassword", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(NewPassword)
@@ -53,7 +57,7 @@ Public Class Frm_ChangeLogInDetails
 
             MsgBox("The password for: " & Username & " has been successfully changed")
         Else
-            MsgBox("Invalud username")
+            MsgBox("Invalid username")
         End If
 
     End Sub
@@ -65,7 +69,7 @@ Public Class Frm_ChangeLogInDetails
         Dim Username, Password As String
 
         Do
-            Username = InputBox("Please enter the current User name:", "UserName")
+            Username = LCase(InputBox("Please enter the current User name:", "UserName"))
             Password = InputBox("Please enter the Password:", "Password")
 
             If Username = "" Or Password = "" Then
@@ -75,21 +79,21 @@ Public Class Frm_ChangeLogInDetails
             End If
         Loop Until ValidInput = True
 
-        MyCommand = New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUsername AND Password = @EncrypterPassword", Connection)
+        MyCommand = New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUsername AND Password = @EncryptedPassword", Connection)
 
         With MyCommand
-            .Parameters.Add("@encrypterUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
-            .Parameters.Add("@encrypterUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Password)
+            .Parameters.Add("@encryptedUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
+            .Parameters.Add("@encryptedPassword", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Password)
         End With
 
         Connection.Open()
         Dim SelectResponse As String = MyCommand.ExecuteScalar()
         Connection.Close()
 
-        If SelectResponse.Length > 0 Then
-            Dim NewUsername As String = InputBox("Please enter the new Username for: " & Username, "New Username")
+        If SelectResponse <> Nothing Then
+            Dim NewUsername As String = LCase(InputBox("Please enter the new Username for: " & Username, "New Username"))
 
-            MyCommand = New MySqlCommand("UPDATE Users SET Username = @EncryptedUsername WHERE UserID = @ID")
+            MyCommand = New MySqlCommand("UPDATE Users SET Username = @EncryptedUsername WHERE UserID = @ID", Connection)
 
             With MyCommand
                 .Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(NewUsername)
@@ -113,7 +117,7 @@ Public Class Frm_ChangeLogInDetails
         Dim Username, Password, Rights As String
 
         Do
-            Username = InputBox("Username:", "New Username")
+            Username = LCase(InputBox("Username:", "New Username"))
             If Username = "" Then 'Cancel clicked, or no input given
                 Exit Sub
             Else
@@ -121,7 +125,7 @@ Public Class Frm_ChangeLogInDetails
             End If
         Loop Until ValidInput = True
 
-        Dim MyCommand As New MySqlCommand("SELECT UserID FROM users WHERE Username = @EncryptedUsername")
+        Dim MyCommand As New MySqlCommand("SELECT UserID FROM users WHERE Username = @EncryptedUsername", Connection)
 
         With MyCommand
             .Parameters.Add("@encryptedUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
@@ -131,7 +135,7 @@ Public Class Frm_ChangeLogInDetails
         Dim UserResponse As String = MyCommand.ExecuteScalar()
         Connection.Close()
 
-        If UserResponse.Length <> 0 Then
+        If UserResponse <> Nothing Then
             MsgBox("That user already exists!!!")
             Exit Sub
         End If
@@ -161,16 +165,17 @@ Public Class Frm_ChangeLogInDetails
         Loop Until ValidInput = True
 
         'INSERT QUERY FOR ADDING NEw USER
-        MyCommand = New MySqlCommand("INSERT INTO 'Inventory'.'users'('Username','Password','Privilage') VALUES (@Username, @Password, @Privilage)", Connection)
+        'MyCommand = New MySqlCommand("INSERT INTO 'Inventory'.'users'('Username','Password','Privilage') VALUES (@Username, @Password, @Privilage)", Connection)
+        MyCommand = New MySqlCommand("INSERT INTO 'Inventory'.'users'('Username','Password') VALUES (@Username, @Password)", Connection)
 
         With MyCommand
             .Parameters.Add("@Username", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
             .Parameters.Add("@Password", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Password)
-            If Rights = "a" Then
-                .Parameters.Add("@Privilage", MySqlDbType.LongText).Value = "Admin"
-            ElseIf Rights = "u" Then
-                .Parameters.Add("@Privilage", MySqlDbType.LongText).Value = "User"
-            End If
+            'If Rights = "a" Then
+            '    .Parameters.Add("@Privilage", MySqlDbType.LongText).Value = "Admin"
+            'ElseIf Rights = "u" Then
+            '    .Parameters.Add("@Privilage", MySqlDbType.LongText).Value = "User"
+            'End If
         End With
 
         'May be worth sticking a Try Catch around this area at a later date
@@ -205,7 +210,7 @@ Public Class Frm_ChangeLogInDetails
         Dim Responce As String = Convert.ToString(Mycommand.ExecuteScalar())
         Connection.Close()
 
-        If Responce.Length > 0 Then 'User exists
+        If Responce - Nothing Then 'User exists
             Mycommand = New MySqlCommand("UPDATE `inventory`.`users` SET `UserID` = '', `Username` = '', `Password` = '' WHERE Username = @EncryptedUsername;", Connection)
             Mycommand.Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = EncryptedUsername
 
