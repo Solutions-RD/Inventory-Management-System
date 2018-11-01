@@ -9,6 +9,7 @@ Public Class Frm_ChangeLogInDetails
 
     End Sub
 
+
     Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles Btn_ChangePassword.Click
         Dim MyCommand As New MySqlCommand
 
