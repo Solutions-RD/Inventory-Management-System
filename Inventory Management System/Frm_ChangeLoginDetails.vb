@@ -9,6 +9,7 @@ Public Class Frm_ChangeLogInDetails
 
     End Sub
 
+
     Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles Btn_ChangePassword.Click
         Dim MyCommand As New MySqlCommand
 
@@ -217,7 +218,6 @@ Public Class Frm_ChangeLogInDetails
         End If
 
     End Sub
-
 
 
     'Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUserName AND password = @EncryptedPassword", Connection) 'Query template
