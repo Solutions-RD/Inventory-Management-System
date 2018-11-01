@@ -31,4 +31,8 @@
         Me.Hide()
 
     End Sub
+
+    Private Sub Lst_VenueA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Lst_VenueA.SelectedIndexChanged
+
+    End Sub
 End Class
