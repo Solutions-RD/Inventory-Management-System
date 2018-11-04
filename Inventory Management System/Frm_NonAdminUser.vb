@@ -30,4 +30,8 @@
         Me.Hide()
 
     End Sub
+
+    Private Sub Frm_NonAdminUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

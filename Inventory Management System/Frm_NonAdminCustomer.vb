@@ -57,4 +57,8 @@
     Private Sub Btn_Customer_Click(sender As Object, e As EventArgs) Handles Btn_Customer.Click
 
     End Sub
+
+    Private Sub Frm_NonAdminCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

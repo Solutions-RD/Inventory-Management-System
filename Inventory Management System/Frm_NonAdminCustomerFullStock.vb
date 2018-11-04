@@ -42,10 +42,15 @@ Public Class Frm_NonAdminCustomerFullStock
         Dim MyCommand As New MySqlCommand(Command, Connection)
 
         Connection.Open()
-        Dim response As String = MyCommand.ExecuteScalar()
-        Connection.Close()
+        Dim response As MySqlDataReader
+        response = MyCommand.ExecuteReader()
 
-        MsgBox(response.ToString)
+        While response.Read()
+            MsgBox(response.GetString(0) & ", " & response.GetString(1) & ", " & response.GetString(2) & ", " & response.GetString(3) & ", " & response.GetString(4) & ", " & response.GetString(5))
+        End While
+
+        Connection.Close()
+        response.Close()
 
     End Sub
 
