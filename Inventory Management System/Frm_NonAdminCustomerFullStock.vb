@@ -45,8 +45,22 @@ Public Class Frm_NonAdminCustomerFullStock
         Dim response As MySqlDataReader
         response = MyCommand.ExecuteReader()
 
+        Lst_VenueA.Items.Clear()
+
         While response.Read()
-            MsgBox(response.GetString(0) & ", " & response.GetString(1) & ", " & response.GetString(2) & ", " & response.GetString(3) & ", " & response.GetString(4) & ", " & response.GetString(5))
+            Dim C(6) As String
+            Dim LvItem As New ListViewItem
+
+            C(1) = response.GetString(1) 'ItemName
+            C(2) = response.GetString(0) 'ItemID
+            C(3) = response.GetString(2) 'ItemBarcode
+            C(4) = response.GetString(3) 'Stock
+            C(5) = response.GetString(4) 'InUse
+            C(6) = response.GetString(5) 'InMaintenance
+
+            LvItem = Lst_VenueA.Items.Add(C(1))
+            LvItem.SubItems.AddRange(New String() {C(2), C(3), C(4), C(5), C(6)})
+
         End While
 
         Connection.Close()

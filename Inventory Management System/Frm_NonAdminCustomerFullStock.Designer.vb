@@ -36,9 +36,10 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Lst_VenueA = New System.Windows.Forms.ListView()
         Me.Clm_ProductA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Clm_ProductIDA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_CatagoryA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_ServiceDatesA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_ReportsA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Clm_BarcodeA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Clm_StockA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Clm_Use = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Clm_Maintenance = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Tb_VenueB = New System.Windows.Forms.TabPage()
         Me.Lst_VenueB = New System.Windows.Forms.ListView()
         Me.Clm_ProductB = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -58,10 +59,6 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Btn_LookUp = New System.Windows.Forms.Button()
         Me.Grp_Menu = New System.Windows.Forms.GroupBox()
         Me.Btn_FullStock = New System.Windows.Forms.Button()
-        Me.Clm_BarcodeA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_StockA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_Use = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Clm_Maintenance = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabControl1.SuspendLayout()
         Me.Tb_VenueA.SuspendLayout()
         Me.Tb_VenueB.SuspendLayout()
@@ -83,7 +80,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Lst_VenueD.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Clm_ProductsD, Me.Clm_ProductsIDD, Me.Clm_CatagoryD, Me.Clm_ServiceDatesD, Me.Clm_ReportsD})
         Me.Lst_VenueD.GridLines = True
         Me.Lst_VenueD.Location = New System.Drawing.Point(14, 13)
-        Me.Lst_VenueD.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Lst_VenueD.Margin = New System.Windows.Forms.Padding(7)
         Me.Lst_VenueD.Name = "Lst_VenueD"
         Me.Lst_VenueD.Size = New System.Drawing.Size(893, 584)
         Me.Lst_VenueD.TabIndex = 4
@@ -124,7 +121,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.TabControl1.Controls.Add(Me.Tb_VenueC)
         Me.TabControl1.Controls.Add(Me.Tb_VenueD)
         Me.TabControl1.Location = New System.Drawing.Point(2, 196)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(7)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(2004, 816)
@@ -134,9 +131,9 @@ Partial Class Frm_NonAdminCustomerFullStock
         '
         Me.Tb_VenueA.Controls.Add(Me.Lst_VenueA)
         Me.Tb_VenueA.Location = New System.Drawing.Point(10, 47)
-        Me.Tb_VenueA.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueA.Margin = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueA.Name = "Tb_VenueA"
-        Me.Tb_VenueA.Padding = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueA.Padding = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueA.Size = New System.Drawing.Size(1984, 759)
         Me.Tb_VenueA.TabIndex = 0
         Me.Tb_VenueA.Text = "Venue A"
@@ -144,10 +141,10 @@ Partial Class Frm_NonAdminCustomerFullStock
         '
         'Lst_VenueA
         '
-        Me.Lst_VenueA.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Clm_ProductA, Me.Clm_ProductIDA, Me.Clm_CatagoryA, Me.Clm_ServiceDatesA, Me.Clm_ReportsA, Me.Clm_BarcodeA, Me.Clm_StockA, Me.Clm_Use, Me.Clm_Maintenance})
+        Me.Lst_VenueA.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Clm_ProductA, Me.Clm_ProductIDA, Me.Clm_BarcodeA, Me.Clm_StockA, Me.Clm_Use, Me.Clm_Maintenance})
         Me.Lst_VenueA.GridLines = True
         Me.Lst_VenueA.Location = New System.Drawing.Point(7, 7)
-        Me.Lst_VenueA.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Lst_VenueA.Margin = New System.Windows.Forms.Padding(7)
         Me.Lst_VenueA.Name = "Lst_VenueA"
         Me.Lst_VenueA.Size = New System.Drawing.Size(1963, 584)
         Me.Lst_VenueA.TabIndex = 2
@@ -157,38 +154,40 @@ Partial Class Frm_NonAdminCustomerFullStock
         'Clm_ProductA
         '
         Me.Clm_ProductA.Text = "Product"
-        Me.Clm_ProductA.Width = 150
+        Me.Clm_ProductA.Width = 100
         '
         'Clm_ProductIDA
         '
         Me.Clm_ProductIDA.Text = "ID"
-        Me.Clm_ProductIDA.Width = 77
+        Me.Clm_ProductIDA.Width = 100
         '
-        'Clm_CatagoryA
+        'Clm_BarcodeA
         '
-        Me.Clm_CatagoryA.DisplayIndex = 6
-        Me.Clm_CatagoryA.Text = "Catagory"
-        Me.Clm_CatagoryA.Width = 180
+        Me.Clm_BarcodeA.Text = "Item Barcode"
+        Me.Clm_BarcodeA.Width = 100
         '
-        'Clm_ServiceDatesA
+        'Clm_StockA
         '
-        Me.Clm_ServiceDatesA.DisplayIndex = 7
-        Me.Clm_ServiceDatesA.Text = "Sevice Dates"
-        Me.Clm_ServiceDatesA.Width = 276
+        Me.Clm_StockA.Text = "Total Stock"
+        Me.Clm_StockA.Width = 100
         '
-        'Clm_ReportsA
+        'Clm_Use
         '
-        Me.Clm_ReportsA.DisplayIndex = 8
-        Me.Clm_ReportsA.Text = "Reports"
-        Me.Clm_ReportsA.Width = 148
+        Me.Clm_Use.Text = "In Use"
+        Me.Clm_Use.Width = 100
+        '
+        'Clm_Maintenance
+        '
+        Me.Clm_Maintenance.Text = "In Maintenance"
+        Me.Clm_Maintenance.Width = 100
         '
         'Tb_VenueB
         '
         Me.Tb_VenueB.Controls.Add(Me.Lst_VenueB)
         Me.Tb_VenueB.Location = New System.Drawing.Point(10, 47)
-        Me.Tb_VenueB.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueB.Margin = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueB.Name = "Tb_VenueB"
-        Me.Tb_VenueB.Padding = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueB.Padding = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueB.Size = New System.Drawing.Size(1984, 759)
         Me.Tb_VenueB.TabIndex = 1
         Me.Tb_VenueB.Text = "Venue B"
@@ -199,7 +198,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Lst_VenueB.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Clm_ProductB, Me.Clm_IDB, Me.Clm_CatagoryB, Me.Clm_ServiceDatesB, Me.Clm_ReportsB})
         Me.Lst_VenueB.GridLines = True
         Me.Lst_VenueB.Location = New System.Drawing.Point(14, 13)
-        Me.Lst_VenueB.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Lst_VenueB.Margin = New System.Windows.Forms.Padding(7)
         Me.Lst_VenueB.Name = "Lst_VenueB"
         Me.Lst_VenueB.Size = New System.Drawing.Size(891, 584)
         Me.Lst_VenueB.TabIndex = 3
@@ -232,7 +231,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         '
         Me.Tb_VenueC.Controls.Add(Me.Lst_VenueC)
         Me.Tb_VenueC.Location = New System.Drawing.Point(10, 47)
-        Me.Tb_VenueC.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueC.Margin = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueC.Name = "Tb_VenueC"
         Me.Tb_VenueC.Size = New System.Drawing.Size(1984, 759)
         Me.Tb_VenueC.TabIndex = 2
@@ -244,7 +243,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Lst_VenueC.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Clm_ProductC, Me.Clm_ProductIDC, Me.Clm_CatagoryC, Me.Clm_ServiceDatesC, Me.Clm_ReportsC})
         Me.Lst_VenueC.GridLines = True
         Me.Lst_VenueC.Location = New System.Drawing.Point(14, 13)
-        Me.Lst_VenueC.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Lst_VenueC.Margin = New System.Windows.Forms.Padding(7)
         Me.Lst_VenueC.Name = "Lst_VenueC"
         Me.Lst_VenueC.Size = New System.Drawing.Size(891, 584)
         Me.Lst_VenueC.TabIndex = 3
@@ -264,7 +263,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         '
         Me.Tb_VenueD.Controls.Add(Me.Lst_VenueD)
         Me.Tb_VenueD.Location = New System.Drawing.Point(10, 47)
-        Me.Tb_VenueD.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Tb_VenueD.Margin = New System.Windows.Forms.Padding(7)
         Me.Tb_VenueD.Name = "Tb_VenueD"
         Me.Tb_VenueD.Size = New System.Drawing.Size(1984, 759)
         Me.Tb_VenueD.TabIndex = 3
@@ -276,7 +275,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Btn_Home.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Btn_Home.BackColor = System.Drawing.SystemColors.Control
         Me.Btn_Home.Location = New System.Drawing.Point(859, 29)
-        Me.Btn_Home.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Btn_Home.Margin = New System.Windows.Forms.Padding(7)
         Me.Btn_Home.Name = "Btn_Home"
         Me.Btn_Home.Size = New System.Drawing.Size(152, 129)
         Me.Btn_Home.TabIndex = 5
@@ -286,7 +285,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         'Button5
         '
         Me.Button5.Location = New System.Drawing.Point(693, 29)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(7)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(152, 129)
         Me.Button5.TabIndex = 4
@@ -296,7 +295,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         'Btn_Supplier
         '
         Me.Btn_Supplier.Location = New System.Drawing.Point(527, 29)
-        Me.Btn_Supplier.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Btn_Supplier.Margin = New System.Windows.Forms.Padding(7)
         Me.Btn_Supplier.Name = "Btn_Supplier"
         Me.Btn_Supplier.Size = New System.Drawing.Size(152, 129)
         Me.Btn_Supplier.TabIndex = 3
@@ -306,7 +305,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         'Btn_Customer
         '
         Me.Btn_Customer.Location = New System.Drawing.Point(362, 29)
-        Me.Btn_Customer.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Btn_Customer.Margin = New System.Windows.Forms.Padding(7)
         Me.Btn_Customer.Name = "Btn_Customer"
         Me.Btn_Customer.Size = New System.Drawing.Size(152, 129)
         Me.Btn_Customer.TabIndex = 2
@@ -316,7 +315,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         'Btn_LookUp
         '
         Me.Btn_LookUp.Location = New System.Drawing.Point(196, 29)
-        Me.Btn_LookUp.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Btn_LookUp.Margin = New System.Windows.Forms.Padding(7)
         Me.Btn_LookUp.Name = "Btn_LookUp"
         Me.Btn_LookUp.Size = New System.Drawing.Size(152, 129)
         Me.Btn_LookUp.TabIndex = 1
@@ -332,9 +331,9 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.Grp_Menu.Controls.Add(Me.Btn_LookUp)
         Me.Grp_Menu.Controls.Add(Me.Btn_FullStock)
         Me.Grp_Menu.Location = New System.Drawing.Point(2, 13)
-        Me.Grp_Menu.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Grp_Menu.Margin = New System.Windows.Forms.Padding(7)
         Me.Grp_Menu.Name = "Grp_Menu"
-        Me.Grp_Menu.Padding = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Grp_Menu.Padding = New System.Windows.Forms.Padding(7)
         Me.Grp_Menu.Size = New System.Drawing.Size(2060, 172)
         Me.Grp_Menu.TabIndex = 7
         Me.Grp_Menu.TabStop = False
@@ -344,36 +343,12 @@ Partial Class Frm_NonAdminCustomerFullStock
         '
         Me.Btn_FullStock.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Btn_FullStock.Location = New System.Drawing.Point(30, 29)
-        Me.Btn_FullStock.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Btn_FullStock.Margin = New System.Windows.Forms.Padding(7)
         Me.Btn_FullStock.Name = "Btn_FullStock"
         Me.Btn_FullStock.Size = New System.Drawing.Size(152, 129)
         Me.Btn_FullStock.TabIndex = 0
         Me.Btn_FullStock.Text = "Full Stock"
         Me.Btn_FullStock.UseVisualStyleBackColor = False
-        '
-        'Clm_BarcodeA
-        '
-        Me.Clm_BarcodeA.DisplayIndex = 2
-        Me.Clm_BarcodeA.Text = "Item Barcode"
-        Me.Clm_BarcodeA.Width = 167
-        '
-        'Clm_StockA
-        '
-        Me.Clm_StockA.DisplayIndex = 3
-        Me.Clm_StockA.Text = "Total Stock"
-        Me.Clm_StockA.Width = 171
-        '
-        'Clm_Use
-        '
-        Me.Clm_Use.DisplayIndex = 4
-        Me.Clm_Use.Text = "In Use"
-        Me.Clm_Use.Width = 227
-        '
-        'Clm_Maintenance
-        '
-        Me.Clm_Maintenance.DisplayIndex = 5
-        Me.Clm_Maintenance.Text = "In Maintenance"
-        Me.Clm_Maintenance.Width = 263
         '
         'Frm_NonAdminCustomerFullStock
         '
@@ -382,7 +357,7 @@ Partial Class Frm_NonAdminCustomerFullStock
         Me.ClientSize = New System.Drawing.Size(2063, 1028)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Grp_Menu)
-        Me.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
+        Me.Margin = New System.Windows.Forms.Padding(7)
         Me.Name = "Frm_NonAdminCustomerFullStock"
         Me.Text = "Frm_NonAdminCustomerFullStock"
         Me.TabControl1.ResumeLayout(False)
@@ -409,9 +384,6 @@ Partial Class Frm_NonAdminCustomerFullStock
     Friend WithEvents Lst_VenueA As ListView
     Friend WithEvents Clm_ProductA As ColumnHeader
     Friend WithEvents Clm_ProductIDA As ColumnHeader
-    Friend WithEvents Clm_CatagoryA As ColumnHeader
-    Friend WithEvents Clm_ServiceDatesA As ColumnHeader
-    Friend WithEvents Clm_ReportsA As ColumnHeader
     Friend WithEvents Tb_VenueB As TabPage
     Friend WithEvents Lst_VenueB As ListView
     Friend WithEvents Clm_ProductB As ColumnHeader
