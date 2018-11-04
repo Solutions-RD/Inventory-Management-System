@@ -1,4 +1,6 @@
-﻿Public Class Frm_NonAdminCustomerFullStock
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Frm_NonAdminCustomerFullStock
 
     Private Sub Btn_Customer_Click_1(sender As Object, e As EventArgs) Handles Btn_Customer.Click
 
@@ -32,7 +34,24 @@
 
     End Sub
 
-    Private Sub Lst_VenueA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Lst_VenueA.SelectedIndexChanged
+    Private Sub RefreshListView()
+
+        Dim Connection As New MySqlConnection(Frm_Login.ConnectionString)
+
+        Dim Command As String = "SELECT items.itemID, ItemName, ItemBarcode, Stock, InUse, InMaintenance FROM items, itemstatus, stock WHERE items.itemID = itemstatus.itemID AND items.itemID = Stock.itemID;"
+        Dim MyCommand As New MySqlCommand(Command, Connection)
+
+        Connection.Open()
+        Dim response As String = MyCommand.ExecuteScalar()
+        Connection.Close()
+
+        MsgBox(response.ToString)
+
+    End Sub
+
+    Private Sub Frm_NonAdminCustomerFullStock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        RefreshListView()
 
     End Sub
 End Class

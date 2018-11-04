@@ -158,7 +158,7 @@ Public Class Frm_ChangeLogInDetails
             Rights = LCase(InputBox("Enter privilage: A) Admin; U) User", "Privilages"))
             If Rights = "" Then 'Cancel clicked or no input
                 Exit Sub
-            ElseIf Rights <> "u" Or Rights <> "u" Then
+            ElseIf Rights <> "a" Or Rights <> "u" Then
                 MsgBox("Please enter a valid input")
             Else
                 ValidInput = True
@@ -223,5 +223,6 @@ Public Class Frm_ChangeLogInDetails
         End If
 
     End Sub
+
 
 End Class

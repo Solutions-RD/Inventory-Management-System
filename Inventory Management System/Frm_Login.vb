@@ -30,8 +30,6 @@ Public Class Frm_Login
 
     Private Sub Btn_Login_Click(sender As Object, e As EventArgs) Handles Btn_Login.Click
 
-        'https://stackoverflow.com/questions/16027925/select-from-mysql-put-into-variable-vb-net
-
         Dim UserName As String = LCase(TxtBox_UserName.Text)
         Dim Password As String = TxtBox_Password.Text
 
@@ -75,7 +73,7 @@ Public Class Frm_Login
 
     Private Sub Login()
 
-        Frm_ChangeLogInDetails.Show()
+        Frm_NonAdminCustomerFullStock.Show()
 
     End Sub
 
