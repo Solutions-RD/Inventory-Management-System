@@ -7,22 +7,19 @@ Public Class Frm_Login
     Public ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
-    Dim ConnectionStatus As Boolean = True
+    Public ConnectionStatus As Boolean = True
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Connection.Open()
 
             If Connection.State = ConnectionState.Closed Then 'DB Connection Test
-                MsgBox("Connection to DB could not be made!! Log in with offline details")
-
                 ConnectionStatus = False
             End If
 
             Connection.Close()
         Catch ex As Exception
             MsgBox("Connection Failed, with error code: " & ex.ToString())
-
             ConnectionStatus = False
         End Try
 
@@ -35,6 +32,7 @@ Public Class Frm_Login
 
         If UserName = "a" And Password = "a" Then 'THIS MUST BE REMOVED BEFORE WE RELEASE!!! HUGE SECURITY FLAW!!!!!!!!!!!!! obviously
             MsgBox("admin login")
+            ConnectionStatus = False
             Login()
         Else
             If TxtBox_Password.Text <> "" And TxtBox_UserName.Text <> "" And ConnectionStatus = True Then

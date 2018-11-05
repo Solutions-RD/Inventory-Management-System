@@ -36,35 +36,40 @@ Public Class Frm_NonAdminCustomerFullStock
 
     Private Sub RefreshListView()
 
-        Dim Connection As New MySqlConnection(Frm_Login.ConnectionString)
+        If Frm_Login.ConnectionStatus = True Then
 
-        Dim Command As String = "SELECT items.itemID, ItemName, ItemBarcode, Stock, InUse, InMaintenance FROM items, itemstatus, stock WHERE items.itemID = itemstatus.itemID AND items.itemID = Stock.itemID;"
-        Dim MyCommand As New MySqlCommand(Command, Connection)
+            Dim Connection As New MySqlConnection(Frm_Login.ConnectionString)
 
-        Connection.Open()
-        Dim response As MySqlDataReader
-        response = MyCommand.ExecuteReader()
+            Dim Command As String = "SELECT items.itemID, ItemName, ItemBarcode, Stock, InUse, InMaintenance FROM items, itemstatus, stock WHERE items.itemID = itemstatus.itemID AND items.itemID = Stock.itemID;"
+            Dim MyCommand As New MySqlCommand(Command, Connection)
 
-        Lst_VenueA.Items.Clear()
+            Connection.Open()
+            Dim response As MySqlDataReader
+            response = MyCommand.ExecuteReader()
 
-        While response.Read()
-            Dim C(6) As String
-            Dim LvItem As New ListViewItem
+            Lst_VenueA.Items.Clear()
 
-            C(1) = response.GetString(1) 'ItemName
-            C(2) = response.GetString(0) 'ItemID
-            C(3) = response.GetString(2) 'ItemBarcode
-            C(4) = response.GetString(3) 'Stock
-            C(5) = response.GetString(4) 'InUse
-            C(6) = response.GetString(5) 'InMaintenance
+            While response.Read()
+                Dim C(6) As String
+                Dim LvItem As New ListViewItem
 
-            LvItem = Lst_VenueA.Items.Add(C(1))
-            LvItem.SubItems.AddRange(New String() {C(2), C(3), C(4), C(5), C(6)})
+                C(1) = response.GetString(1) 'ItemName
+                C(2) = response.GetString(0) 'ItemID
+                C(3) = response.GetString(2) 'ItemBarcode
+                C(4) = response.GetString(3) 'Stock
+                C(5) = response.GetString(4) 'InUse
+                C(6) = response.GetString(5) 'InMaintenance
 
-        End While
+                LvItem = Lst_VenueA.Items.Add(C(1))
+                LvItem.SubItems.AddRange(New String() {C(2), C(3), C(4), C(5), C(6)})
 
-        Connection.Close()
-        response.Close()
+            End While
+
+            Connection.Close()
+            response.Close()
+        Else
+            MsgBox("Unable to load database as offline login was used")
+        End If
 
     End Sub
 
