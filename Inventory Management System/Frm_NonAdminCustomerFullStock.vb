@@ -40,7 +40,7 @@ Public Class Frm_NonAdminCustomerFullStock
 
             Dim Connection As New MySqlConnection(Frm_Login.ConnectionString)
 
-            Dim Command As String = "SELECT items.itemID, ItemName, ItemBarcode, Stock, InUse, InMaintenance FROM items, itemstatus, stock WHERE items.itemID = itemstatus.itemID AND items.itemID = Stock.itemID;"
+            Dim Command As String = "SELECT Items.ItemID, ItemName, ItemBarcode, Stock, InUse, InMaintenance FROM Items, ItemStatus, Stock WHERE Items.ItemID = ItemStatus.ItemID AND Items.ItemID = Stock.ItemID;"
             Dim MyCommand As New MySqlCommand(Command, Connection)
 
             Connection.Open()

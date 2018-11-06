@@ -153,7 +153,7 @@ Public Class Frm_ChangeLogInDetails
                 End If
             Loop Until ValidInput = True
 
-            Dim MyCommand As New MySqlCommand("SELECT UserID FROM users WHERE Username = @EncryptedUsername", Connection)
+            Dim MyCommand As New MySqlCommand("SELECT UserID FROM Users WHERE Username = @EncryptedUsername", Connection)
 
             With MyCommand
                 .Parameters.Add("@encryptedUsername", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
@@ -193,7 +193,7 @@ Public Class Frm_ChangeLogInDetails
             Loop Until ValidInput = True
 
             'INSERT query for adding new user
-            MyCommand = New MySqlCommand("INSERT INTO Inventory.users(Username,Password) VALUES (@Username, @Password)", Connection)
+            MyCommand = New MySqlCommand("INSERT INTO Inventory.Users(Username,Password) VALUES (@Username, @Password)", Connection)
 
             With MyCommand
                 .Parameters.Add("@Username", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)
@@ -243,7 +243,7 @@ Public Class Frm_ChangeLogInDetails
             Connection.Close()
 
             If Responce - Nothing Then 'User exists
-                Mycommand = New MySqlCommand("DELETE FROM users WHERE Username = @EncryptedUsername;", Connection)
+                Mycommand = New MySqlCommand("DELETE FROM Users WHERE Username = @EncryptedUsername;", Connection)
                 Mycommand.Parameters.Add("@EncryptedUsername", MySqlDbType.LongText).Value = EncryptedUsername
 
                 Connection.Open()

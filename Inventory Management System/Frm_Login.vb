@@ -4,7 +4,8 @@ Imports System.Text
 Imports System.Security.Cryptography
 
 Public Class Frm_Login
-    Public ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory"
+    'Public ConnectionString As String = "Server=DESKTOP-OQPQSOP;User Id=Admin;Password=AdminPickles1350!;Database=inventory" 'backup Connection to my PC when SQL server is running
+    Public ConnectionString As String = "Server=inventorydb.cf0s8ueg2afz.eu-west-2.rds.amazonaws.com;User Id=Admin;Password=Pickles1350!;Database=Inventory"
     Dim Connection As New MySqlConnection(ConnectionString)
 
     Public ConnectionStatus As Boolean = True
@@ -69,7 +70,7 @@ Public Class Frm_Login
 
     Private Sub Login()
 
-        'Frm_NonAdminCustomerFullStock.Show()
+        Frm_NonAdminCustomerFullStock.Show()
         Frm_ChangeLogInDetails.Show()
 
     End Sub
