@@ -30,8 +30,7 @@ Public Class Frm_Login
         Dim UserName As String = LCase(TxtBox_UserName.Text)
         Dim Password As String = TxtBox_Password.Text
 
-        If UserName = "a" And Password = "a" Then 'THIS MUST BE REMOVED BEFORE WE RELEASE!!! HUGE SECURITY FLAW!!!!!!!!!!!!! obviously
-            MsgBox("admin login")
+        If UserName = "a" And Password = "a" Then 'THIS MUST BE REMOVED BEFORE WE RELEASE!!! HUGE SECURITY FLAW!!!!!!!!!!!!!
             ConnectionStatus = False
             Login()
         Else
@@ -64,14 +63,14 @@ Public Class Frm_Login
 
     End Sub
 
-
     Private Sub Btn_Forgotten_Click(sender As Object, e As EventArgs) Handles Btn_Forgotten.Click
         MsgBox("Please contact the system admin on: " & My.Settings.SystemAdmin)
     End Sub
 
     Private Sub Login()
 
-        Frm_NonAdminCustomerFullStock.Show()
+        'Frm_NonAdminCustomerFullStock.Show()
+        Frm_ChangeLogInDetails.Show()
 
     End Sub
 
