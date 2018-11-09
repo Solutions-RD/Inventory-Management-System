@@ -78,4 +78,26 @@ Public Class Frm_NonAdminCustomerFullStock
         RefreshListView()
 
     End Sub
+
+    Private Sub Grb_ViewTable_Enter(sender As Object, e As EventArgs) Handles Grb_ViewTable.Enter
+
+    End Sub
+
+    Private Sub Btn_AddNew_Click(sender As Object, e As EventArgs) Handles Btn_AddNew.Click
+        Grb_AddNew.Visible = True
+        Grb_AddNew.Enabled = True
+        Grb_ViewTable.Enabled = False
+        Grb_ViewTable.Visible = False
+
+    End Sub
+
+    Private Sub Btn_SavetoDB_Click(sender As Object, e As EventArgs) Handles Btn_SavetoDB.Click
+
+        MsgBox("this needs to save to database, returning to product list")
+        Grb_ViewTable.Enabled = True
+        Grb_ViewTable.Visible = True
+        Grb_AddNew.Visible = False
+        Grb_AddNew.Enabled = False
+
+    End Sub
 End Class
