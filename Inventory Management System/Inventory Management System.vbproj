@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Checklist.vb" />
     <Compile Include="Frm_ChangeLoginDetails.Designer.vb">
       <DependentUpon>Frm_ChangeLoginDetails.vb</DependentUpon>
     </Compile>
