@@ -193,7 +193,7 @@ Public Class Frm_ChangeLogInDetails
             Loop Until ValidInput = True
 
             'INSERT query for adding new user
-            MyCommand = New MySqlCommand("INSERT INTO Inventory.Users(Username,Password) VALUES (@Username, @Password)", Connection)
+            MyCommand = New MySqlCommand("INSERT INTO Users(Username,Password) VALUES (@Username, @Password)", Connection)
 
             With MyCommand
                 .Parameters.Add("@Username", MySqlDbType.LongText).Value = Frm_Login.GenerateSHA256String(Username)

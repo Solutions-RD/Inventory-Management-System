@@ -9,7 +9,7 @@ Public Class Frm_NonAdminCustomerFullStock
     End Sub
 
     Private Sub Btn_Home_Click(sender As Object, e As EventArgs) Handles Btn_Home.Click
-
+        'This is a comment
         Frm_NonAdminUser.Show()
         Me.Hide()
 
@@ -75,6 +75,7 @@ Public Class Frm_NonAdminCustomerFullStock
 
     Private Sub Frm_NonAdminCustomerFullStock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        MonthCalendar1.MinDate = DateTime.Today()
         RefreshListView()
 
     End Sub
@@ -93,11 +94,86 @@ Public Class Frm_NonAdminCustomerFullStock
 
     Private Sub Btn_SavetoDB_Click(sender As Object, e As EventArgs) Handles Btn_SavetoDB.Click
 
-        MsgBox("this needs to save to database, returning to product list")
-        Grb_ViewTable.Enabled = True
-        Grb_ViewTable.Visible = True
-        Grb_AddNew.Visible = False
-        Grb_AddNew.Enabled = False
+        Dim Catagory, Name, Customer, CurrentStatus, Barcode As String
+
+        Catagory = Cb_Cat.Text
+        Name = Tbx_Name.Text
+        Customer = Cb_Customer.Text
+        CurrentStatus = Cb_Status.Text
+        Barcode = txt_Barcode.Text
+
+        Dim ErrorMessage As String = CheckValidInputs(Catagory, Name, Customer, CurrentStatus, Barcode)
+
+        If Len(ErrorMessage) = 0 Then
+            SaveSettings(Catagory, Name, Customer, CurrentStatus, Barcode)
+
+            Grb_ViewTable.Enabled = True
+            Grb_ViewTable.Visible = True
+            Grb_AddNew.Visible = False
+            Grb_AddNew.Enabled = False
+        Else
+            MsgBox("Invalid input with these errors:" & vbCrLf & vbCrLf & ErrorMessage)
+        End If
+
+    End Sub
+
+    Function CheckValidInputs(ByVal Catagory As String, ByVal Name As String, ByVal Customer As String, ByVal CurrentStatus As String, ByVal Barcode As String)
+        Dim ErrorMessage As String = ""
+
+        If IsNumeric(Barcode) = False Or Len(Barcode) = 0 Then
+            ErrorMessage = ErrorMessage + "Barcode must be numerical value!" & vbCrLf
+        End If
+
+        If Catagory = "" Then
+            ErrorMessage = ErrorMessage + "Catagory must not be empty!" & vbCrLf
+        End If
+
+        If Name = "" Then
+            ErrorMessage = ErrorMessage + "Name must not be empty!" & vbCrLf
+        End If
+
+        If Customer = "" Then
+            ErrorMessage = ErrorMessage + "Customer must not be empty!" & vbCrLf
+        End If
+
+        If CurrentStatus = "" Then
+            ErrorMessage = ErrorMessage + "Current Status must not be empty!" & vbCrLf
+        End If
+
+        Return ErrorMessage
+    End Function
+
+    Sub SaveSettings(ByVal Catagory As String, ByVal Name As String, ByVal Customer As String, ByVal CurrentStatus As String, ByVal Barcode As Integer)
+
+        Dim Connection As New MySqlConnection(Frm_Login.ConnectionString)
+
+        Dim Command As String = "INSERT INTO Items(ItemName, ItemBarcode) VALUES (@Name, @Barcode);" 'Creating the Item
+        Dim MyCommand As New MySqlCommand(Command, Connection)
+
+        With MyCommand
+            .Parameters.Add("@Name", MySqlDbType.LongText).Value = Name
+            .Parameters.Add("@Barcode", MySqlDbType.Int64).Value = Barcode
+        End With
+
+        Connection.Open()
+        MyCommand.ExecuteReader()
+        Connection.Close()
+
+
+        Command = "SELECT ItemID FROM Items WHERE ItemName = @Name AND Barcode = @Barcode" 'Getting the Items auto assigned ID
+        MyCommand = New MySqlCommand(Command, Connection)
+
+        With MyCommand
+            .Parameters.Add("@Name", MySqlDbType.LongText).Value = Name
+            .Parameters.Add("@Barcode", MySqlDbType.Int64).Value = Barcode
+        End With
+
+        Connection.Open()
+        Dim Response As String = MyCommand.ExecuteScalar
+        Dim ItemID As String = Response(0)
+        Connection.Close()
+
+        MsgBox(ItemID)
 
     End Sub
 End Class

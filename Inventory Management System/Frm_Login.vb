@@ -71,7 +71,10 @@ Public Class Frm_Login
     Private Sub Login()
 
         Frm_NonAdminCustomerFullStock.Show()
-        Frm_ChangeLogInDetails.Show()
+
+        'if AdminLoginUsed = true then
+        Frm_ChangeLogInDetails.Show() 'unComment when Admin Rights have been entered
+        'end if
 
     End Sub
 
